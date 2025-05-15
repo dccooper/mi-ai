@@ -15,7 +15,6 @@ const MessageInput: React.FC<MessageInputProps> = ({
   onSendMessage, 
   isThinking,
   isFinalSummary,
-  onSaveConversation,
 }) => {
   const [userInput, setUserInput] = useState("");
 
@@ -36,17 +35,6 @@ const MessageInput: React.FC<MessageInputProps> = ({
   return (
     <div className="p-4 border-t border-mi-light bg-white">
       <div className="max-w-3xl mx-auto">
-        <div className="flex justify-between mb-4">
-          {isFinalSummary && (
-            <Button 
-              onClick={onSaveConversation}
-              variant="outline" 
-              className="text-sm border-mi-primary text-mi-primary hover:bg-mi-light"
-            >
-              Save Conversation
-            </Button>
-          )}
-        </div>
         <div className="flex gap-2">
           <Textarea
             value={userInput}

@@ -19,7 +19,6 @@ const ChatInterface: React.FC = () => {
     handleSendMessage,
     setShowAssessment,
     setShowApiKeyModal,
-    saveConversation
   } = useChatLogic();
 
   return (
@@ -35,7 +34,6 @@ const ChatInterface: React.FC = () => {
         onSendMessage={handleSendMessage}
         isThinking={isThinking}
         isFinalSummary={isFinalSummary}
-        onSaveConversation={saveConversation}
       />
 
       {/* Modals */}
