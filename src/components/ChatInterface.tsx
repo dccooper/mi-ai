@@ -6,7 +6,7 @@ import AssessmentModal from "./AssessmentModal";
 import ApiKeyModal from "./ApiKeyModal";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Key } from "lucide-react";
 import { generateResponse, getApiKey } from "../services/openaiService";
 import { toast } from "sonner";
 
@@ -14,6 +14,8 @@ const ChatInterface: React.FC = () => {
   const [userInput, setUserInput] = useState("");
   const [showAssessment, setShowAssessment] = useState(false);
   const [showApiKeyModal, setShowApiKeyModal] = useState(!getApiKey());
+  const [apiKeyError, setApiKeyError] = useState<string | null>(null);
+  const [isUpdatingApiKey, setIsUpdatingApiKey] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { 
     state: { 
@@ -45,12 +47,19 @@ const ChatInterface: React.FC = () => {
     }
   }, [messages.length]);
 
+  // Open API key modal
+  const handleOpenApiKeyModal = (isUpdating = false, errorMsg = null) => {
+    setIsUpdatingApiKey(isUpdating);
+    setApiKeyError(errorMsg);
+    setShowApiKeyModal(true);
+  };
+
   // Send a message and get AI response
   const handleSendMessage = async () => {
     if (!userInput.trim()) return;
     
     if (!getApiKey()) {
-      setShowApiKeyModal(true);
+      handleOpenApiKeyModal(false);
       return;
     }
 
@@ -87,7 +96,13 @@ const ChatInterface: React.FC = () => {
         targetBehavior
       );
       
-      handleAIResponse(response);
+      // Check if the response contains API key errors
+      if (response.includes("exceeded its quota") || response.includes("API key")) {
+        setApiKeyError(response);
+        handleOpenApiKeyModal(true, response);
+      } else {
+        handleAIResponse(response);
+      }
     } catch (error) {
       console.error("Error getting AI response:", error);
       toast.error("Failed to get a response. Please try again.");
@@ -140,8 +155,8 @@ const ChatInterface: React.FC = () => {
       {/* Input area */}
       <div className="p-4 border-t border-mi-light bg-white">
         <div className="max-w-3xl mx-auto">
-          {isFinalSummary && (
-            <div className="mb-4 flex justify-end">
+          <div className="flex justify-between mb-4">
+            {isFinalSummary && (
               <Button 
                 onClick={saveConversation}
                 variant="outline" 
@@ -149,8 +164,17 @@ const ChatInterface: React.FC = () => {
               >
                 Save Conversation
               </Button>
-            </div>
-          )}
+            )}
+            <Button
+              variant="outline"
+              size="sm"
+              className="ml-auto text-xs border-mi-light text-mi-dark/70 hover:bg-mi-light flex items-center gap-1"
+              onClick={() => handleOpenApiKeyModal(true)}
+            >
+              <Key className="h-3 w-3" />
+              Update API Key
+            </Button>
+          </div>
           <div className="flex gap-2">
             <Textarea
               value={userInput}
@@ -195,6 +219,8 @@ const ChatInterface: React.FC = () => {
       <ApiKeyModal
         open={showApiKeyModal}
         onClose={() => setShowApiKeyModal(false)}
+        isUpdating={isUpdatingApiKey}
+        errorMessage={apiKeyError || undefined}
       />
     </div>
   );

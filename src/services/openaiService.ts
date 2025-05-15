@@ -168,6 +168,14 @@ export const generateResponse = async (
     if (!response.ok) {
       const errorData = await response.json();
       console.error('API Error:', errorData);
+      
+      // Handle specific error cases
+      if (errorData.error?.code === 'insufficient_quota') {
+        return "Your OpenAI API key has exceeded its quota. Please check your OpenAI account billing status or try a different API key.";
+      } else if (errorData.error?.code === 'invalid_api_key') {
+        return "The API key you provided appears to be invalid. Please check your key and try again.";
+      }
+      
       return "I encountered an error communicating with OpenAI. Please check your API key or try again later.";
     }
 

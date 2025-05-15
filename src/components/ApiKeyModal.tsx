@@ -10,9 +10,16 @@ import { toast } from "sonner";
 interface ApiKeyModalProps {
   open: boolean;
   onClose: () => void;
+  isUpdating?: boolean;
+  errorMessage?: string;
 }
 
-const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ open, onClose }) => {
+const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ 
+  open, 
+  onClose, 
+  isUpdating = false,
+  errorMessage 
+}) => {
   const [apiKey, setApiKeyState] = useState("");
   const { addMessage } = useMI();
 
@@ -25,14 +32,16 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ open, onClose }) => {
     // Save API key
     setApiKey(apiKey.trim());
     
-    // Add welcome message
-    addMessage({
-      content: 
-        "Hi there! I'm an AI assistant trained in Motivational Interviewing techniques. " +
-        "I'm here to help you explore your thoughts about changing a behavior. " +
-        "What behavior would you like to discuss today?",
-      sender: "ai",
-    });
+    if (!isUpdating) {
+      // Add welcome message only for initial setup
+      addMessage({
+        content: 
+          "Hi there! I'm an AI assistant trained in Motivational Interviewing techniques. " +
+          "I'm here to help you explore your thoughts about changing a behavior. " +
+          "What behavior would you like to discuss today?",
+        sender: "ai",
+      });
+    }
     
     toast.success("API key saved successfully!");
     onClose();
@@ -42,9 +51,18 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ open, onClose }) => {
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-mi-primary">API Key Required</DialogTitle>
+          <DialogTitle className="text-mi-primary">
+            {isUpdating ? "Update API Key" : "API Key Required"}
+          </DialogTitle>
           <DialogDescription>
-            To use this Motivational Interviewing tool, please enter your OpenAI API key.
+            {errorMessage ? (
+              <div className="mb-2 text-red-500">{errorMessage}</div>
+            ) : null}
+            
+            {isUpdating ? 
+              "Please enter a new OpenAI API key." :
+              "To use this Motivational Interviewing tool, please enter your OpenAI API key."
+            }
             <br /><br />
             Your key is only stored in your browser session and is not saved on any server.
           </DialogDescription>
@@ -61,7 +79,7 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ open, onClose }) => {
             className="w-full bg-mi-primary hover:bg-mi-primary/80 text-white" 
             onClick={handleSubmit}
           >
-            Save API Key
+            {isUpdating ? "Update API Key" : "Save API Key"}
           </Button>
           <div className="mt-4 text-center text-xs text-mi-dark/60">
             Don't have an OpenAI API key? 
@@ -73,6 +91,9 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ open, onClose }) => {
             >
               Get one here
             </a>
+          </div>
+          <div className="mt-2 text-center text-xs text-mi-dark/60">
+            If you're seeing quota errors, you may need to add billing information to your OpenAI account or create a new API key.
           </div>
         </div>
       </DialogContent>
