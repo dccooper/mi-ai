@@ -17,7 +17,6 @@ const ChatInterface: React.FC = () => {
     apiKeyError,
     isUpdatingApiKey,
     handleSendMessage,
-    handleOpenApiKeyModal,
     setShowAssessment,
     setShowApiKeyModal,
     saveConversation
@@ -37,7 +36,6 @@ const ChatInterface: React.FC = () => {
         isThinking={isThinking}
         isFinalSummary={isFinalSummary}
         onSaveConversation={saveConversation}
-        onUpdateApiKey={() => handleOpenApiKeyModal(true)}
       />
 
       {/* Modals */}

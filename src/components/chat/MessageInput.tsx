@@ -2,14 +2,13 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { ArrowUp, Key } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 interface MessageInputProps {
   onSendMessage: (message: string) => void;
   isThinking: boolean;
   isFinalSummary: boolean;
   onSaveConversation: () => void;
-  onUpdateApiKey: () => void;
 }
 
 const MessageInput: React.FC<MessageInputProps> = ({ 
@@ -17,7 +16,6 @@ const MessageInput: React.FC<MessageInputProps> = ({
   isThinking,
   isFinalSummary,
   onSaveConversation,
-  onUpdateApiKey
 }) => {
   const [userInput, setUserInput] = useState("");
 
@@ -48,15 +46,6 @@ const MessageInput: React.FC<MessageInputProps> = ({
               Save Conversation
             </Button>
           )}
-          <Button
-            variant="outline"
-            size="sm"
-            className="ml-auto text-xs border-mi-light text-mi-dark/70 hover:bg-mi-light flex items-center gap-1"
-            onClick={onUpdateApiKey}
-          >
-            <Key className="h-3 w-3" />
-            Update API Key
-          </Button>
         </div>
         <div className="flex gap-2">
           <Textarea

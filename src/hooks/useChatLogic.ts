@@ -35,7 +35,7 @@ export const useChatLogic = () => {
     }
   }, [messages.length]);
 
-  // Open API key modal
+  // Handle API key modal
   const handleOpenApiKeyModal = (isUpdating = false, errorMsg = null) => {
     setIsUpdatingApiKey(isUpdating);
     setApiKeyError(errorMsg);
