@@ -21,6 +21,8 @@ const queryClient = new QueryClient({
   },
 });
 
+const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
 /**
  * Root application component that provides:
  * - React Query for data management
