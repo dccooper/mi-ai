@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -59,9 +58,10 @@ const MessageInput: React.FC<MessageInputProps> = ({
             href="https://www.buymeacoffee.com/KouHzyPEc" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-xs text-mi-dark/50 hover:text-mi-primary"
+            className="inline-flex items-center px-4 py-2 bg-[#FF5F5F] text-white rounded-lg hover:bg-[#FF5F5F]/90 transition-colors"
           >
-            Support this project ❤️
+            <span role="img" aria-label="taco" className="mr-2">🌮</span>
+            Buy me a taco
           </a>
         </div>
       </div>
