@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -20,7 +19,7 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({
   isUpdating = false,
   errorMessage 
 }) => {
-  const [apiKey, setApiKeyState] = useState("");
+  const [apiKey, setApiKeyState] = useState(import.meta.env.VITE_OPENAI_API_KEY || "");
   const { addMessage } = useMI();
 
   const handleSubmit = () => {
@@ -46,6 +45,13 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({
     toast.success("API key saved successfully!");
     onClose();
   };
+
+  // If we have an environment variable API key, submit automatically
+  React.useEffect(() => {
+    if (import.meta.env.VITE_OPENAI_API_KEY && !isUpdating) {
+      handleSubmit();
+    }
+  }, []);
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
