@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <header className="flex justify-between items-center py-4 px-6 bg-white border-b border-mi-light">
       <div className="flex items-center">
-        <div className="text-mi-primary text-2xl font-bold mr-2">MI</div>
+        <div className="text-mi-primary text-2xl font-bold mr-2">MI-AI</div>
         <h1 className="text-xl font-semibold text-mi-dark">
           Motivational <span className="text-mi-primary">Interviewing</span> Assistant
         </h1>
