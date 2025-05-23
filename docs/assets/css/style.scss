@@ -1,0 +1,19 @@
+@import "{{ site.theme }}";
+
+.btn {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-nav {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.main-nav .btn {
+  margin: 0 0.5rem;
+} 

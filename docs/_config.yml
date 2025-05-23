@@ -1,0 +1,11 @@
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme
+
+title: MI-AI Assistant
+description: An experimental AI chatbot using Motivational Interviewing techniques
+show_downloads: true
+
+github:
+  is_project_page: true
+  repository_url: https://github.com/[your-username]/mi-ai 

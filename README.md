@@ -1,73 +1,57 @@
-# Welcome to your Lovable project
+# MI-AI: Motivational Interviewing Assistant
 
-## Project info
+An experimental AI chatbot that uses Motivational Interviewing techniques to help explore behavior change. This project combines evidence-based MI practices with modern AI to create a conversational experience for exploring change.
 
-**URL**: https://lovable.dev/projects/5bb3c636-a5b9-422f-9182-e6427f9941a5
+## 📚 Based on Evidence-Based Practice
 
-## How can I edit this code?
+This project's Motivational Interviewing implementation is based on:
+[SAMHSA's TIP 35: Enhancing Motivation for Change in Substance Use Disorder Treatment](https://library.samhsa.gov/product/tip-35-enhancing-motivation-change-substance-use-disorder-treatment/pep19-02-01-003) (2019)
 
-There are several ways of editing your application.
+The chatbot's conversation flow, techniques, and stage-based responses are derived from this comprehensive clinical guide, adapting professional MI practices for an AI context.
 
-**Use Lovable**
+## 🌟 Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5bb3c636-a5b9-422f-9182-e6427f9941a5) and start prompting.
+- Natural conversation using MI techniques
+- Dynamic response to readiness signals
+- Strength-based approach to change
+- Secure API key handling
+- Progressive assessment based on change readiness
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Try It Out
 
-**Use your preferred IDE**
+Visit the live demo: [MI-AI Assistant](https://mi-ai.vercel.app/)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🛠️ Technical Stack
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
+- React + TypeScript
 - Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- TailwindCSS
+- OpenAI GPT-4
+- Vercel deployment
 
-## How can I deploy this project?
+## 🔒 Privacy & Security
 
-Simply open [Lovable](https://lovable.dev/projects/5bb3c636-a5b9-422f-9182-e6427f9941a5) and click on Share -> Publish.
+- No conversation data is stored
+- OpenAI API keys are handled securely
+- All processing happens client-side
 
-## Can I connect a custom domain to my Lovable project?
+## 🎯 Purpose
 
-Yes, you can!
+This is an experimental project exploring the intersection of:
+- Motivational Interviewing techniques
+- AI conversation capabilities
+- Behavior change support
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📝 License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+[Your chosen license]
+
+## 🤝 Contributing
+
+This is an experimental project. Feel free to fork and explore your own variations!
+
+## 📝 References
+
+This project implements Motivational Interviewing techniques as described in:
+
+SAMHSA. (2019). *TIP 35: Enhancing Motivation for Change in Substance Use Disorder Treatment*. Publication No. PEP19-02-01-003. Substance Abuse and Mental Health Services Administration.
