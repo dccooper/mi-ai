@@ -40,8 +40,8 @@ Motivational Interviewing is a collaborative, person-centered approach that enco
 
 ### Developers and Contributors:
 
-* Visit our [GitHub repository](https://github.com/[your-username]/mi-ai) to contribute or learn more about the project.
-* Check the [README](https://github.com/[your-username]/mi-ai/blob/main/README.md) for detailed instructions on running the app locally.
+* Visit our [GitHub repository](https://github.com/dccooper/mi-ai) to contribute or learn more about the project.
+* Check the [README](https://github.com/dccooper/mi-ai/blob/main/README.md) for detailed instructions on running the app locally.
 
 ---
 
