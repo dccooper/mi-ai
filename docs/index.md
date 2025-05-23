@@ -25,4 +25,8 @@ This project's Motivational Interviewing implementation is based on:
 - Secure API key handling
 - Progressive assessment based on change readiness
 
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/[your-username]/mi-ai/blob/main/LICENSE) file for details.
+
 [... rest of README content ...] 

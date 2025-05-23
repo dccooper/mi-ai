@@ -5,6 +5,10 @@ title: MI-AI Assistant
 description: An experimental AI chatbot using Motivational Interviewing techniques
 show_downloads: true
 
+# License info
+license: MIT
+license_url: https://github.com/[your-username]/mi-ai/blob/main/LICENSE
+
 # Navigation
 header_pages:
   - index.md
