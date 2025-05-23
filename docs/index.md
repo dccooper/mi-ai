@@ -1,6 +1,6 @@
 ---
-layout: default
-title: MI-AI Documentation
+layout: page
+title: MI-AI Assistant
 ---
 
 # MI-AI: Motivational Interviewing Assistant

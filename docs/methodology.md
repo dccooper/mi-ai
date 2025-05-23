@@ -1,6 +1,6 @@
 ---
-layout: default
-title: MI-AI Methodology
+layout: page
+title: Methodology
 ---
 
 [← Back to Home](index.html){: .btn }
