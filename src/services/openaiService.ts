@@ -14,7 +14,7 @@ export const setApiKey = (key: string): void => {
 };
 
 export const getApiKey = (): string | null => {
-  return OPENAI_API_KEY;
+  return OPENAI_API_KEY || import.meta.env.VITE_OPENAI_API_KEY;
 };
 
 // Helper to convert our Message type to OpenAI message format
@@ -161,7 +161,8 @@ export const generateResponse = async (
   stage: Stage,
   targetBehavior: string | null
 ): Promise<string> => {
-  if (!OPENAI_API_KEY) {
+  const apiKey = getApiKey();
+  if (!apiKey) {
     return "I need an OpenAI API key to continue our conversation. Please enter your API key.";
   }
 
@@ -176,7 +177,7 @@ export const generateResponse = async (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         model: 'gpt-4',

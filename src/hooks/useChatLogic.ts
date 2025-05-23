@@ -5,7 +5,9 @@ import { toast } from "sonner";
 
 export const useChatLogic = () => {
   const [showAssessment, setShowAssessment] = useState(false);
-  const [showApiKeyModal, setShowApiKeyModal] = useState(!getApiKey());
+  const [showApiKeyModal, setShowApiKeyModal] = useState(
+    !getApiKey() && !import.meta.env.VITE_OPENAI_API_KEY
+  );
   const [apiKeyError, setApiKeyError] = useState<string | null>(null);
   const [isUpdatingApiKey, setIsUpdatingApiKey] = useState(false);
   
@@ -25,7 +27,7 @@ export const useChatLogic = () => {
 
   // Send welcome message when chat starts
   useEffect(() => {
-    if (messages.length === 0 && getApiKey()) {
+    if (messages.length === 0 && (getApiKey() || import.meta.env.VITE_OPENAI_API_KEY)) {
       handleAIResponse(
         "Hi there! I'm an AI assistant trained in Motivational Interviewing techniques. " +
         "I'm here to help you explore your thoughts about changing a behavior. " +
@@ -77,7 +79,8 @@ export const useChatLogic = () => {
   const handleSendMessage = async (userInput: string) => {
     if (!userInput.trim()) return;
     
-    if (!getApiKey()) {
+    const apiKey = getApiKey();
+    if (!apiKey) {
       handleOpenApiKeyModal(false);
       return;
     }
