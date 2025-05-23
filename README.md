@@ -106,7 +106,8 @@ For issues, suggestions, or feedback, please open a GitHub issue. Ensure contrib
 
 ## 📷 Screenshots
 
-*(Optional: Add screenshots or GIFs of your application here to enhance user engagement.)*
+![MI-AI Screenshot](public/images/MI-AI.png)
+*MI-AI's conversational interface demonstrating Motivational Interviewing techniques*
 
 ---
 

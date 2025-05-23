@@ -48,7 +48,8 @@ Motivational Interviewing is a collaborative, person-centered approach that enco
 
 ## 🖼️ Preview
 
-*(Optional: Add a screenshot or engaging visual here to enhance user engagement.)*
+![MI-AI Screenshot](assets/images/MI-AI.png)
+*MI-AI's conversational interface demonstrating Motivational Interviewing techniques*
 
 ---
 
