@@ -31,8 +31,8 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({
     // Save API key
     setApiKey(apiKey.trim());
     
-    if (!isUpdating) {
-      // Add welcome message only for initial setup
+    // Only add welcome message if manually entering API key
+    if (!isUpdating && !import.meta.env.VITE_OPENAI_API_KEY) {
       addMessage({
         content: 
           "Hi there! I'm an AI assistant trained in Motivational Interviewing techniques. " +
