@@ -91,24 +91,51 @@ export const useChatLogic = () => {
       sender: "user",
     });
 
-    // If this is the first message, set target behavior but don't show assessment yet
+    // Set target behavior only on first message
     if (!targetBehavior) {
       setTargetBehavior(userInput);
     }
 
-    // Check for readiness signals in the conversation
-    const readinessSignals = [
-      "i might", "i could", "thinking about", "considering",
-      "maybe i should", "i want to", "i'd like to",
-      "i need to", "i have to", "planning to"
+    // More specific readiness signals that indicate commitment to change
+    const strongReadinessSignals = [
+      "i want to change", "i need to change", 
+      "i'm ready to", "i have to change",
+      "i'm going to", "i will", "i must",
+      "i've decided to", "it's time to"
     ];
 
-    const hasReadinessSignals = readinessSignals.some(signal => 
+    const moderateReadinessSignals = [
+      "i might", "i could", "thinking about", 
+      "considering", "maybe i should",
+      "i want to", "i'd like to"
+    ];
+
+    // Count how many messages show readiness
+    const messageHistory = [...messages, { content: userInput, sender: 'user' }];
+    const readinessCount = messageHistory.filter(msg => 
+      msg.sender === 'user' && (
+        strongReadinessSignals.some(signal => 
+          msg.content.toLowerCase().includes(signal.toLowerCase())
+        ) ||
+        moderateReadinessSignals.some(signal => 
+          msg.content.toLowerCase().includes(signal.toLowerCase())
+        )
+      )
+    ).length;
+
+    // Only show assessment after multiple signs of readiness
+    const hasStrongSignal = strongReadinessSignals.some(signal => 
       userInput.toLowerCase().includes(signal.toLowerCase())
     );
 
-    // Show assessment only when readiness signals are detected
-    if (hasReadinessSignals && !showAssessment) {
+    const hasModerateSignal = moderateReadinessSignals.some(signal => 
+      userInput.toLowerCase().includes(signal.toLowerCase())
+    );
+
+    // Show assessment if:
+    // 1. We have a strong readiness signal OR
+    // 2. We have at least 2 moderate signals across the conversation
+    if (!showAssessment && (hasStrongSignal || (hasModerateSignal && readinessCount >= 2))) {
       setTimeout(() => {
         setShowAssessment(true);
       }, 1000);
