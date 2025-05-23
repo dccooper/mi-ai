@@ -8,7 +8,7 @@ title: MI-AI Assistant
 Welcome to **MI-AI**, an experimental AI chatbot designed to support individuals exploring behavior changes. By blending evidence-based Motivational Interviewing (MI) practices with cutting-edge conversational AI, MI-AI provides personalized guidance to help users identify and strengthen their motivations for positive change.
 
 [Try the Live Demo](https://mi-ai.vercel.app/){: .btn .btn-primary }
-[View on GitHub](https://github.com/[your-username]/mi-ai){: .btn }
+[View on GitHub](https://github.com/dccooper/mi-ai){: .btn }
 
 ---
 
