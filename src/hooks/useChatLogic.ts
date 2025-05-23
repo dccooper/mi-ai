@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useMI } from "../context/MIContext";
 import { generateResponse, getApiKey } from "../services/openaiService";
@@ -89,11 +88,24 @@ export const useChatLogic = () => {
       sender: "user",
     });
 
-    // If this is the first message, it might contain the target behavior
+    // If this is the first message, set target behavior but don't show assessment yet
     if (!targetBehavior) {
       setTargetBehavior(userInput);
-      
-      // Ask for assessment after identifying target behavior
+    }
+
+    // Check for readiness signals in the conversation
+    const readinessSignals = [
+      "i might", "i could", "thinking about", "considering",
+      "maybe i should", "i want to", "i'd like to",
+      "i need to", "i have to", "planning to"
+    ];
+
+    const hasReadinessSignals = readinessSignals.some(signal => 
+      userInput.toLowerCase().includes(signal.toLowerCase())
+    );
+
+    // Show assessment only when readiness signals are detected
+    if (hasReadinessSignals && !showAssessment) {
       setTimeout(() => {
         setShowAssessment(true);
       }, 1000);
